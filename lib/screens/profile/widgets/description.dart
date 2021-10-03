@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_rus_api/components/models/character.dart';
+import 'package:rick_and_morty_rus_api/data/models/character.dart';
+
 import 'package:rick_and_morty_rus_api/theme/color_theme.dart';
 import 'package:rick_and_morty_rus_api/theme/text_theme.dart';
 

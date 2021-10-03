@@ -83,7 +83,7 @@ class PageSliverHeader extends SliverPersistentHeaderDelegate {
                   shape: CircleBorder(),
                 ),
                 child: SvgPicture.asset(
-                  AppIcons.arrow_back,
+                  AppIcons.arrowBack,
                   width: 14,
                   color: ColorTheme.white,
                 ),

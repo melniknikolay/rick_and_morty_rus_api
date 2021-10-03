@@ -32,7 +32,7 @@ class _CharactersCountState extends State<CharactersCount> {
           ),
           IconButton(
             icon: SvgPicture.asset(
-              isGridView ? AppIcons.view_list : AppIcons.view_grid,
+              isGridView ? AppIcons.viewList : AppIcons.viewGrid,
             ),
             onPressed: () {
               setState(() {

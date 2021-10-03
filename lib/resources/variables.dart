@@ -1,4 +1,5 @@
-import '../components/models/character.dart';
+import 'package:rick_and_morty_rus_api/data/models/character.dart';
+
 import '../resources/images.dart';
 import '../screens/profile/models/chapter.dart';
 
