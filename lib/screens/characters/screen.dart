@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_and_morty_rus_api/components/app_bottom_navigation_bar.dart';
 
 import 'package:rick_and_morty_rus_api/components/search_text_field.dart';
 import 'package:rick_and_morty_rus_api/data/models/character.dart';
@@ -36,7 +37,7 @@ class CharactersScreen extends StatelessWidget {
                 automaticallyImplyLeading: false,
                 title: SearchTextField(title: 'Найти персонажа'),
                 bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(60),
+                  preferredSize: Size.fromHeight(40),
                   child: CharactersCount(
                     charactersCount: _data.charactersList.length,
                     onSelected: (value) {
@@ -49,10 +50,11 @@ class CharactersScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              body: SafeArea(
-                child: _data.isGrid
-                    ? CharactersGrid(_data.charactersList)
-                    : CharactersList(_data.charactersList),
+              body: _data.isGrid
+                  ? CharactersGrid(charactersList)
+                  : CharactersList(charactersList),
+              bottomNavigationBar: AppBottomNavigationBar(
+                currentIndex: 0,
               ),
             ),
             orElse: () => SizedBox.shrink(),
