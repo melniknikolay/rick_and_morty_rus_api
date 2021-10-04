@@ -1,5 +1,6 @@
 class AppIcons {
   static const String arrowBack = 'assets/svg_icons/arrow_back.svg';
+  static const String arrowPlay = 'assets/svg_icons/arrow_play.svg';
   static const String arrowForwardIos =
       'assets/svg_icons/arrow_forward_ios.svg';
   static const String filterSort = 'assets/svg_icons/filter_sort.svg';

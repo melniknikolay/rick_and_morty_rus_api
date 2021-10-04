@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rick_and_morty_rus_api/resources/icons.dart';
+import 'package:rick_and_morty_rus_api/theme/color_theme.dart';
 import 'package:rick_and_morty_rus_api/theme/text_theme.dart';
-
-import '../../../components/arrow_button.dart';
 
 class LocationTile extends StatelessWidget {
   final String title;
@@ -35,7 +36,11 @@ class LocationTile extends StatelessWidget {
           ],
         ),
         Spacer(),
-        ArrowButton(onPressed: () {}),
+        SvgPicture.asset(
+          AppIcons.arrowForwardIos,
+          height: 8.0,
+          color: ColorTheme.white,
+        ),
       ],
     );
   }

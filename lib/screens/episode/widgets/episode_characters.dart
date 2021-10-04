@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '/components/character_list_tile.dart';
-import '/resources/icons.dart';
-
 import '/data/models/character.dart';
+import '/resources/icons.dart';
+import '/resources/variables.dart';
 import '/theme/color_theme.dart';
-import '/theme/text_theme.dart';
 
-class LocationCharacters extends StatelessWidget {
-  final List<Character> charactersOnLocation;
+class EpisodeCharacters extends StatelessWidget {
+  final String chapterTitle;
 
-  LocationCharacters(this.charactersOnLocation);
+  EpisodeCharacters(this.chapterTitle);
 
   @override
   Widget build(BuildContext context) {
+    List<Character> characters = getCharactersOnEpisode(chapterTitle);
+
     return ListView.builder(
       padding: const EdgeInsets.only(top: 12.0),
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => CharacterListTile(
-        character: charactersOnLocation[index],
+        character: characters[index],
         suffix: SvgPicture.asset(
           AppIcons.arrowForwardIos,
           height: 8.0,
@@ -28,7 +28,7 @@ class LocationCharacters extends StatelessWidget {
         ),
         onTap: () {},
       ),
-      itemCount: charactersOnLocation.length,
+      itemCount: characters.length,
       itemExtent: 98.0,
     );
   }

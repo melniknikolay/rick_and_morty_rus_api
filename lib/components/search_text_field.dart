@@ -7,11 +7,9 @@ import '../theme/color_theme.dart';
 import '../theme/text_theme.dart';
 
 class SearchTextField extends StatelessWidget {
-  SearchTextField({
-    required this.title,
-  });
-
   final String title;
+  final Widget? suffixIcon;
+  SearchTextField({required this.title, this.suffixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -38,25 +36,7 @@ class SearchTextField extends StatelessWidget {
             color: ColorTheme.blueGrey_600,
           ),
         ),
-        suffixIcon: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 1.0,
-              height: 24.0,
-              color: ColorTheme.white.withOpacity(0.1),
-            ),
-            IconButton(
-              padding: EdgeInsets.fromLTRB(10.0, 12.0, 12.0, 12.0),
-              icon: SvgPicture.asset(
-                AppIcons.filterSort,
-                color: ColorTheme.blueGrey_600,
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
+        suffixIcon: suffixIcon,
       ),
       onSubmitted: (submit) {},
     );

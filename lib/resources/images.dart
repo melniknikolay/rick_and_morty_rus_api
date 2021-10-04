@@ -6,6 +6,9 @@ class Images {
   static const String chapter2 = 'assets/images/chapter_2.png';
   static const String chapter3 = 'assets/images/chapter_3.png';
   static const String chapter4 = 'assets/images/chapter_4.png';
+  static const String chapter5 = 'assets/images/chapter_5.png';
+  static const String chapter6 = 'assets/images/chapter_6.png';
+  static const String chapter7 = 'assets/images/chapter_7.png';
 
   static const String character1 = 'assets/images/character_1.png';
   static const String character2 = 'assets/images/character_2.png';
@@ -18,5 +21,5 @@ class Images {
 
   static const String location1 = 'assets/images/location_1.png';
   static const String location2 = 'assets/images/chapter_3.png';
-  static const String location3 = 'assets/images/location_3.png';
+  static const String location3 = 'assets/images/location_3.jpg';
 }

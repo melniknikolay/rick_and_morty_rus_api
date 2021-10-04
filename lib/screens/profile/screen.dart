@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_and_morty_rus_api/components/app_divider.dart';
 
 import 'package:rick_and_morty_rus_api/data/models/character.dart';
+import 'package:rick_and_morty_rus_api/data/models/episode.dart';
 import 'package:rick_and_morty_rus_api/resources/variables.dart';
 import 'package:rick_and_morty_rus_api/theme/color_theme.dart';
 
@@ -15,7 +17,7 @@ import 'widgets/page_sliver_header.dart';
 
 class ProfileScreen extends StatelessWidget {
   final Character _character = character1;
-  final List<Chapter> _chaptersList = chaptersList;
+  final List<Episode> _chaptersList = episodesList;
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +56,7 @@ class ProfileScreen extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 36.0),
-                        child:
-                            Divider(color: ColorTheme.blue_600, thickness: 2.0),
+                        child: AppDivider(),
                       ),
                     ),
                     ChaptersHeader(),
