@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_rus_api/theme/text_theme.dart';
 
-import 'arrow_button.dart';
+import '../../../components/arrow_button.dart';
 
 class LocationTile extends StatelessWidget {
+  final String title;
+  final String location;
   const LocationTile(
     this.title,
     this.location,
   );
-
-  final String title;
-  final String location;
 
   @override
   Widget build(BuildContext context) {

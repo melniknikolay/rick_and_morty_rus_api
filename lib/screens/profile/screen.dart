@@ -14,7 +14,6 @@ import 'widgets/description.dart';
 import 'widgets/page_sliver_header.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final ScrollController scrollController = ScrollController();
   final Character _character = character1;
   final List<Chapter> _chaptersList = chaptersList;
 
@@ -39,7 +38,6 @@ class ProfileScreen extends StatelessWidget {
               data: (_data) => Scaffold(
                 extendBodyBehindAppBar: true,
                 body: CustomScrollView(
-                  controller: scrollController,
                   slivers: <Widget>[
                     SliverPersistentHeader(
                       delegate: PageSliverHeader(

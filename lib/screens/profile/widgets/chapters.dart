@@ -3,14 +3,13 @@ import 'package:rick_and_morty_rus_api/screens/profile/models/chapter.dart';
 import 'package:rick_and_morty_rus_api/theme/color_theme.dart';
 import 'package:rick_and_morty_rus_api/theme/text_theme.dart';
 
-import 'arrow_button.dart';
+import '../../../components/arrow_button.dart';
 
 class Chapters extends StatelessWidget {
+  final List<Chapter> chaptersList;
   const Chapters({
     required this.chaptersList,
   });
-
-  final List<Chapter> chaptersList;
 
   @override
   Widget build(BuildContext context) {

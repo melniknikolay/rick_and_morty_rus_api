@@ -8,14 +8,13 @@ import 'column_text.dart';
 import 'location_tile.dart';
 
 class Description extends StatelessWidget {
+  final double avatarSize;
+  final Character character;
   const Description({
     required Key? key,
     required this.avatarSize,
     required this.character,
   });
-
-  final double avatarSize;
-  final Character character;
 
   @override
   Widget build(BuildContext context) {

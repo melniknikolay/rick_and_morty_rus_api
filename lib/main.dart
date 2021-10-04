@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rick_and_morty_rus_api/screens/location/screen.dart';
 import 'package:rick_and_morty_rus_api/screens/location_list/screen.dart';
 
 import './screens/characters/screen.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: ColorTheme.blue_900,
         primaryColor: ColorTheme.blue_900,
       ),
-      home: LocationListScree(),
+      home: LocationScreen(),
     );
   }
 }
