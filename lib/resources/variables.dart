@@ -174,6 +174,13 @@ List<Character> getCharactersOnEpisode(String episode) {
   throw 'Episode not found';
 }
 
+List<String> get themeModeTitles => [
+      'Выключена',
+      'Включена',
+      'Следовать настройкам системы',
+      'В режиме энергосбережения',
+    ];
+
 List<Season> seasons = [
   Season('Сезон 1', episodesList),
   Season('Сезон 2', List.from(episodesList)..shuffle()),

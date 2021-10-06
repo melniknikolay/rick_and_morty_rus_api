@@ -11,4 +11,5 @@ class AppIcons {
   static const String tabLocations = 'assets/svg_icons/tab_locations.svg';
   static const String viewList = 'assets/svg_icons/view_list.svg';
   static const String viewGrid = 'assets/svg_icons/view_grid.svg';
+  static const String themePalette = 'assets/svg_icons/theme_palette.svg';
 }
