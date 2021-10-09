@@ -8,7 +8,8 @@ import '../theme/text_theme.dart';
 
 class AppBottomNavigationBar extends StatelessWidget {
   final currentIndex;
-  AppBottomNavigationBar({this.currentIndex});
+  final VoidCallback onTap;
+  AppBottomNavigationBar({required this.currentIndex, required this.onTap});
 
   static const _activeColor = ColorTheme.green_200;
   static const _inactiveColor = ColorTheme.blueGrey_600;

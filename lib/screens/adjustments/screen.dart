@@ -55,7 +55,10 @@ class AdjustmentsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: AppBottomNavigationBar(currentIndex: 3),
+      bottomNavigationBar: AppBottomNavigationBar(
+        currentIndex: 3,
+        onTap: () {},
+      ),
     );
   }
 }
