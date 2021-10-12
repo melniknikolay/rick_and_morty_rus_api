@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_and_morty_rus_api/screens/episode/bloc/episode_bloc.dart';
 import '/components/location_app_bar.dart';
 import '/resources/variables.dart';
 import '/screens/episode/widgets/episode_characters.dart';
@@ -8,21 +10,34 @@ import '/screens/episode/widgets/episode_image.dart';
 class EpisodeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: TransparentAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            EpisodeImage(
-              image: currentChapter.image,
-              onPressed: () {},
+    return BlocProvider<EpisodeBloc>(
+      create: (BuildContext context) =>
+          EpisodeBloc()..add(EpisodeEvent.initial()),
+      child: BlocConsumer<EpisodeBloc, EpisodeState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return state.maybeMap(
+            loading: (_) => CircularProgressIndicator(),
+            data: (_data) => Scaffold(
+              extendBodyBehindAppBar: true,
+              appBar: TransparentAppBar(),
+              body: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    EpisodeImage(
+                      image: _data.selectedEpisode.image,
+                      onPressed: () {},
+                    ),
+                    EpisodeDescription(_data.selectedEpisode),
+                    EpisodeCharacters(_data.selectedEpisode.title),
+                  ],
+                ),
+              ),
             ),
-            EpisodeDescription(currentChapter),
-            EpisodeCharacters(currentChapter.title),
-          ],
-        ),
+            orElse: () => SizedBox.shrink(),
+          );
+        },
       ),
     );
   }
