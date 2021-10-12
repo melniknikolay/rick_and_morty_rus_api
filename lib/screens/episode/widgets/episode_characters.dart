@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rick_and_morty_rus_api/data/models/person.dart';
 import '/components/character_list_tile.dart';
 import '/data/models/character.dart';
 import '/resources/icons.dart';
@@ -7,14 +8,12 @@ import '/resources/variables.dart';
 import '/theme/color_theme.dart';
 
 class EpisodeCharacters extends StatelessWidget {
-  final String chapterTitle;
+  final List<Character> characters;
 
-  EpisodeCharacters(this.chapterTitle);
+  EpisodeCharacters(this.characters);
 
   @override
   Widget build(BuildContext context) {
-    List<Character> characters = getCharactersOnEpisode(chapterTitle);
-
     return ListView.builder(
       padding: const EdgeInsets.only(top: 12.0),
       shrinkWrap: true,

@@ -1,21 +1,68 @@
-class Character {
-  final String name;
-  final String status;
-  final String avatar;
-  final String race;
-  final String gender;
-  String biography;
-  final String birthplace;
-  String location;
+import 'package:rick_and_morty_rus_api/data/models/location.dart';
 
-  Character(
-    this.name,
+import 'episode.dart';
+
+enum Status { live, dead, unknown }
+
+class Character {
+  Character({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.fullName,
     this.status,
-    this.avatar,
-    this.race,
+    this.about,
     this.gender,
-    this.birthplace, {
-    this.biography = 'Not available',
-    this.location = 'Not available',
+    this.race,
+    this.imageName,
+    this.placeOfBirthId,
+    this.placeOfBirth,
+    this.episodes,
   });
+
+  final String? id;
+  final String? firstName;
+  final String? lastName;
+  final String? fullName;
+  final int? status;
+  final String? about;
+  final int? gender;
+  final String? race;
+  final String? imageName;
+  final String? placeOfBirthId;
+  final Location? placeOfBirth;
+  final List<Episode>? episodes;
+
+  factory Character.fromJson(Map<String, dynamic> json) => Character(
+        id: json["id"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
+        fullName: json["fullName"],
+        status: json["status"],
+        about: json["about"],
+        gender: json["gender"],
+        race: json["race"],
+        imageName: json["imageName"],
+        placeOfBirthId: json["placeOfBirthId"],
+        placeOfBirth: (json["placeOfBirth"] is String)
+            ? Location(name: json["placeOfBirth"])
+            : Location.fromJson(json["placeOfBirth"]),
+        episodes: List<Episode>.from(
+            json["episodes"]?.map((x) => Episode.fromJson(x)) ?? []),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "firstName": firstName,
+        "lastName": lastName,
+        "fullName": fullName,
+        "status": status,
+        "about": about,
+        "gender": gender,
+        "race": race,
+        "imageName": imageName,
+        "placeOfBirthId": placeOfBirthId,
+        "placeOfBirth": placeOfBirth?.toJson(),
+        "episodes": List<dynamic>.from(episodes?.map((x) => x.toJson()) ?? []),
+      };
 }

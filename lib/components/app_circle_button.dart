@@ -3,10 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/color_theme.dart';
 
 class AppCircleButton extends StatelessWidget {
+  const AppCircleButton({required this.icon, required this.onPressed});
   final String icon;
   final VoidCallback onPressed;
-
-  AppCircleButton({required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rick_and_morty_rus_api/components/location_app_bar.dart';
 
-import '/resources/variables.dart';
+import 'package:rick_and_morty_rus_api/components/transparent_app_bar.dart';
 
 import '/screens/location/widgets/location_characters.dart';
 import '/screens/location/widgets/location_description.dart';
@@ -25,7 +24,7 @@ class LocationScreen extends StatelessWidget {
         /// Обрабатываем состояния
         builder: (context, state) {
           return state.maybeMap(
-            loading: (_) => CircularProgressIndicator(),
+            loading: (_) => Center(child: CircularProgressIndicator()),
             data: (_data) => Scaffold(
               extendBodyBehindAppBar: true,
               appBar: TransparentAppBar(),
@@ -33,9 +32,11 @@ class LocationScreen extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    LocationImage(_data.location.image),
+                    LocationImage(_data.location.imageName),
                     LocationDescription(_data.location),
-                    LocationCharacters(_data.charactersAtLocation),
+                    _data.location.characters == null
+                        ? SizedBox.shrink()
+                        : LocationCharacters(_data.location.characters!),
                   ],
                 ),
               ),

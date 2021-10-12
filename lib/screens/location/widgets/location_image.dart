@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '/theme/color_theme.dart';
 
 class LocationImage extends StatelessWidget {
-  final String image;
+  final String? image;
 
   LocationImage(this.image);
 
   @override
   Widget build(BuildContext context) {
-    const imageHeight = 277.0;
+    const imageHeight = 276.0;
     const borderRadius = 26.0;
 
     return Stack(
@@ -18,9 +18,10 @@ class LocationImage extends StatelessWidget {
           height: imageHeight,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(image),
+              image: NetworkImage(image ?? 'none'),
               fit: BoxFit.fitHeight,
             ),
+            color: ColorTheme.blue_600,
           ),
         ),
         Positioned(

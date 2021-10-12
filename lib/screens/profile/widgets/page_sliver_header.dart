@@ -35,7 +35,7 @@ class PageSliverHeader extends SliverPersistentHeaderDelegate {
           child: Stack(
             fit: StackFit.passthrough,
             children: [
-              Image.asset(
+              Image.network(
                 image,
                 fit: BoxFit.cover,
               ),
@@ -59,7 +59,7 @@ class PageSliverHeader extends SliverPersistentHeaderDelegate {
               height: avatarSize,
               decoration: ShapeDecoration(
                 image: DecorationImage(
-                  image: AssetImage(image),
+                  image: NetworkImage(image),
                   fit: BoxFit.cover,
                 ),
                 shape: CircleBorder(

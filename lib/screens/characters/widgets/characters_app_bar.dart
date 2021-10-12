@@ -10,7 +10,7 @@ import '/screens/characters/bloc/characters_bloc.dart';
 import '/screens/characters/widgets/characters_count.dart';
 
 class CharactersAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final int charactersListLength;
+  final int? charactersListLength;
   static const _appBarHeight = 112.0;
 
   CharactersAppBar(this.charactersListLength)
@@ -50,7 +50,7 @@ class CharactersAppBar extends StatelessWidget implements PreferredSizeWidget {
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(40.0),
         child: CharactersCount(
-          charactersCount: charactersListLength,
+          charactersCount: charactersListLength ?? 0,
           onSelected: (value) {
             /// Для создания события используется контекст с обращением к блоку в контексте
             context.read<CharactersBloc>()

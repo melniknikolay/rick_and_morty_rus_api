@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rick_and_morty_rus_api">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="rick_and_morty_rus_api"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

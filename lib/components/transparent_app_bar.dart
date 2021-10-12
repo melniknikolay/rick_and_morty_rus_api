@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '/components/app_circle_button.dart';
-import '/resources/icons.dart';
+import 'package:rick_and_morty_rus_api/resources/icons.dart';
+
+import 'app_circle_button.dart';
 
 class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget {
   TransparentAppBar() : preferredSize = Size.fromHeight(kToolbarHeight);

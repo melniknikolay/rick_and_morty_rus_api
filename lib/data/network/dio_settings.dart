@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class DioSettings {
-  static final mainServer = "https://api.???.kz/";
+  static final mainServer = "http://173.249.20.184:7001/api";
 
   Dio dio = Dio(
     BaseOptions(
@@ -12,7 +12,10 @@ class DioSettings {
   );
 
   void initialSettings() {
+    print("## Dio initial settings");
     Interceptors interceptors = dio.interceptors;
+
+    // RequestOptions requestOptions = RequestOptions(path: "/Characters/GetAll");
     late RequestOptions requestOptions;
 
     interceptors.requestLock.lock();
@@ -21,10 +24,12 @@ class DioSettings {
       InterceptorsWrapper(
         onRequest: (options, handler) {
           requestOptions = options;
+          return handler.next(options);
         },
 
         /// Обрабатываем ошибки
         onResponse: (response, handler) {
+          print("## onResponse in DIO");
           if (response.statusCode == 204) {
             throw DioError(
               requestOptions: requestOptions,
@@ -35,8 +40,10 @@ class DioSettings {
               ),
             );
           }
+          return handler.next(response);
         },
         onError: (DioError error, handler) async {
+          print(error);
           if (error.type == DioErrorType.connectTimeout) {
             throw DioError(
               requestOptions: requestOptions,
@@ -56,10 +63,9 @@ class DioSettings {
               ),
             );
           } else if (error.response!.statusCode == 401) {
-            // Ошибка авторизации
-
+            
           }
-          return error as Future;
+          return handler.next(error);
         },
       ),
     );

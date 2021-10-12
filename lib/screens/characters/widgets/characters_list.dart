@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty_rus_api/data/models/person.dart';
 import '/components/character_list_tile.dart';
 import '/data/models/character.dart';
 
@@ -17,7 +18,7 @@ class CharactersList extends StatelessWidget {
       itemCount: charactersList.length,
       itemExtent: 98.0,
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: AlwaysScrollableScrollPhysics(),
       padding: const EdgeInsets.only(bottom: 24),
     );
   }

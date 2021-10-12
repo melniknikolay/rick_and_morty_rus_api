@@ -180,12 +180,9 @@ abstract class _InitialLocationEvent implements LocationEvent {
 class _$LocationStateTearOff {
   const _$LocationStateTearOff();
 
-  _DataLocationState data(
-      {required Location location,
-      required List<Character> charactersAtLocation}) {
+  _DataLocationState data({required Location location}) {
     return _DataLocationState(
       location: location,
-      charactersAtLocation: charactersAtLocation,
     );
   }
 
@@ -205,25 +202,21 @@ const $LocationState = _$LocationStateTearOff();
 mixin _$LocationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Location location, List<Character> charactersAtLocation)
-        data,
+    required TResult Function(Location location) data,
     required TResult Function() initial,
     required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
     required TResult orElse(),
@@ -275,7 +268,7 @@ abstract class _$DataLocationStateCopyWith<$Res> {
   factory _$DataLocationStateCopyWith(
           _DataLocationState value, $Res Function(_DataLocationState) then) =
       __$DataLocationStateCopyWithImpl<$Res>;
-  $Res call({Location location, List<Character> charactersAtLocation});
+  $Res call({Location location});
 }
 
 /// @nodoc
@@ -292,17 +285,12 @@ class __$DataLocationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? location = freezed,
-    Object? charactersAtLocation = freezed,
   }) {
     return _then(_DataLocationState(
       location: location == freezed
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Location,
-      charactersAtLocation: charactersAtLocation == freezed
-          ? _value.charactersAtLocation
-          : charactersAtLocation // ignore: cast_nullable_to_non_nullable
-              as List<Character>,
     ));
   }
 }
@@ -310,19 +298,16 @@ class __$DataLocationStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DataLocationState implements _DataLocationState {
-  const _$_DataLocationState(
-      {required this.location, required this.charactersAtLocation});
+  const _$_DataLocationState({required this.location});
 
   @override
 
   ///Параметры
   final Location location;
-  @override
-  final List<Character> charactersAtLocation;
 
   @override
   String toString() {
-    return 'LocationState.data(location: $location, charactersAtLocation: $charactersAtLocation)';
+    return 'LocationState.data(location: $location)';
   }
 
   @override
@@ -331,17 +316,12 @@ class _$_DataLocationState implements _DataLocationState {
         (other is _DataLocationState &&
             (identical(other.location, location) ||
                 const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
-            (identical(other.charactersAtLocation, charactersAtLocation) ||
-                const DeepCollectionEquality()
-                    .equals(other.charactersAtLocation, charactersAtLocation)));
+                    .equals(other.location, location)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(charactersAtLocation);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(location);
 
   @JsonKey(ignore: true)
   @override
@@ -351,37 +331,33 @@ class _$_DataLocationState implements _DataLocationState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Location location, List<Character> charactersAtLocation)
-        data,
+    required TResult Function(Location location) data,
     required TResult Function() initial,
     required TResult Function() loading,
   }) {
-    return data(location, charactersAtLocation);
+    return data(location);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
   }) {
-    return data?.call(location, charactersAtLocation);
+    return data?.call(location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(location, charactersAtLocation);
+      return data(location);
     }
     return orElse();
   }
@@ -422,14 +398,11 @@ class _$_DataLocationState implements _DataLocationState {
 }
 
 abstract class _DataLocationState implements LocationState {
-  const factory _DataLocationState(
-      {required Location location,
-      required List<Character> charactersAtLocation}) = _$_DataLocationState;
+  const factory _DataLocationState({required Location location}) =
+      _$_DataLocationState;
 
   ///Параметры
   Location get location => throw _privateConstructorUsedError;
-  List<Character> get charactersAtLocation =>
-      throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DataLocationStateCopyWith<_DataLocationState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -475,9 +448,7 @@ class _$_InitialLocationState implements _InitialLocationState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Location location, List<Character> charactersAtLocation)
-        data,
+    required TResult Function(Location location) data,
     required TResult Function() initial,
     required TResult Function() loading,
   }) {
@@ -487,8 +458,7 @@ class _$_InitialLocationState implements _InitialLocationState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
   }) {
@@ -498,8 +468,7 @@ class _$_InitialLocationState implements _InitialLocationState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
     required TResult orElse(),
@@ -589,9 +558,7 @@ class _$_LoadingLocationState implements _LoadingLocationState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            Location location, List<Character> charactersAtLocation)
-        data,
+    required TResult Function(Location location) data,
     required TResult Function() initial,
     required TResult Function() loading,
   }) {
@@ -601,8 +568,7 @@ class _$_LoadingLocationState implements _LoadingLocationState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
   }) {
@@ -612,8 +578,7 @@ class _$_LoadingLocationState implements _LoadingLocationState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Location location, List<Character> charactersAtLocation)?
-        data,
+    TResult Function(Location location)? data,
     TResult Function()? initial,
     TResult Function()? loading,
     required TResult orElse(),

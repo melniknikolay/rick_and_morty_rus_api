@@ -9,16 +9,13 @@ import 'package:rick_and_morty_rus_api/resources/variables.dart';
 import 'package:rick_and_morty_rus_api/theme/color_theme.dart';
 
 import 'bloc/profile_bloc.dart';
-import 'models/chapter.dart';
+
 import 'widgets/chapters.dart';
 import 'widgets/chapters_header.dart';
 import 'widgets/description.dart';
 import 'widgets/page_sliver_header.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final Character _character = character1;
-  final List<Episode> _chaptersList = episodesList;
-
   @override
   Widget build(BuildContext context) {
     final double avatarSize = MediaQuery.of(context).size.width / 4;
@@ -30,13 +27,14 @@ class ProfileScreen extends StatelessWidget {
 
         /// Обрабатываем состояние
         child: BlocConsumer<ProfileBloc, ProfileState>(
-          /// Для ошибок и навигации
+          /// Возвращает виджеты поверх основного состояния. Используется для отображения
+          /// ошибок, навигации и пр.
           listener: (context, state) {},
 
           /// Обрабатывает состояния
           builder: (context, state) {
             return state.maybeMap(
-              loading: (_) => CircularProgressIndicator(),
+              loading: (_) => Center(child: CircularProgressIndicator()),
               data: (_data) => Scaffold(
                 extendBodyBehindAppBar: true,
                 body: CustomScrollView(
@@ -44,15 +42,12 @@ class ProfileScreen extends StatelessWidget {
                     SliverPersistentHeader(
                       delegate: PageSliverHeader(
                         expandedHeight: 218,
-                        image: _data.character.avatar,
+                        image: _data.character.imageName ?? "None",
                       ),
                       pinned: true,
                     ),
                     Description(
-                      avatarSize: avatarSize,
-                      character: _data.character,
-                      key: null,
-                    ),
+                        avatarSize: avatarSize, character: _data.character),
                     SliverToBoxAdapter(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 36.0),
@@ -60,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     ChaptersHeader(),
-                    Chapters(chaptersList: _data.chaptersList),
+                    Chapters(chaptersList: _data.character.episodes ?? []),
                   ],
                 ),
               ),

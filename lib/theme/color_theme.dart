@@ -11,6 +11,7 @@ class ColorTheme {
   static const Color red_100 = Color(0xFFEB5757);
   static const Color white = Color(0xFFFFFFFF);
   static const Color transparent = Color(0x0);
+  static const Color yellow_200 = Color(0xFFD0C243);
 
   static final appBarGradient = LinearGradient(
     colors: [

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rick_and_morty_rus_api/components/race_gender_text.dart';
+import 'package:rick_and_morty_rus_api/components/status_text.dart';
 
+import '../data/models/person.dart';
 import '../data/models/character.dart';
 import '../theme/color_theme.dart';
 import '../theme/text_theme.dart';
@@ -28,7 +31,7 @@ class CharacterListTile extends StatelessWidget {
             height: 74.0,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(character.avatar),
+                image: NetworkImage(character.imageName ?? "None"),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(40.0),
@@ -40,20 +43,11 @@ class CharacterListTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                character.status.toUpperCase(),
-                style: AppTextTheme.subtitle2.copyWith(
-                  height: 1.6,
-                  letterSpacing: 1.5,
-                  color: character.status.toUpperCase() == 'ЖИВОЙ'
-                      ? ColorTheme.green_200
-                      : ColorTheme.red_100,
-                ),
-              ),
+              StatusText(statusIndex: character.status ?? 2),
               ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: 200.0),
                 child: Text(
-                  character.name,
+                  character.fullName ?? "None",
                   overflow: TextOverflow.fade,
                   softWrap: false,
                   style: AppTextTheme.subtitle1.copyWith(
@@ -62,13 +56,7 @@ class CharacterListTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                '${character.race}, ${character.gender}',
-                style: AppTextTheme.caption.copyWith(
-                  height: 1.33,
-                  letterSpacing: 0.5,
-                ),
-              ),
+              RaceGenderText(character: character),
             ],
           ),
           Spacer(),

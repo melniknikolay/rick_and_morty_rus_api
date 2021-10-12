@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../data/models/characters_model.dart';
+import '/data/repository.dart';
 import '/data/models/character.dart';
 import '/resources/variables.dart';
 
@@ -10,8 +12,11 @@ part 'characters_bloc.freezed.dart';
 
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   CharactersBloc() : super(CharactersState.initial());
+
+  final _repository = Repository();
+
   bool isGrid = false;
-  List<Character> _charactersList = charactersList;
+  late List<Character> _charactersList;
 
   /// Отслеживает события. Метод map позволяет нам сократить код и не дает потерять состояние.
   @override
@@ -34,8 +39,13 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
 
     try {
       /// Получение данных
+      print("## Начинаем загрузку персонажей");
+      _charactersList =
+          await _repository.getCharactersList(pageNumber: 1, pageSize: 10) ??
+              [];
     } catch (ex) {
       /// Возвращаем состояние с ошибкой
+      print("## Получи ошибку в блоке персонажей $ex");
     }
 
     /// Возвращаем состояние с данными

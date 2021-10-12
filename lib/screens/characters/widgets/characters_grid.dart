@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_rus_api/data/models/character.dart';
+import 'package:rick_and_morty_rus_api/data/models/person.dart';
 
 import 'character_grid_item.dart';
 
 class CharactersGrid extends StatelessWidget {
   final List<Character> charactersList;
-  CharactersGrid(this.charactersList);
+
+  const CharactersGrid(this.charactersList);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class CharactersGrid extends StatelessWidget {
         itemCount: charactersList.length,
         shrinkWrap: true,
         padding: const EdgeInsets.symmetric(vertical: 0),
-        physics: NeverScrollableScrollPhysics(),
+        physics: AlwaysScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 12.0,

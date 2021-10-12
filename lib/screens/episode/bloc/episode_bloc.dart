@@ -4,6 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rick_and_morty_rus_api/data/models/episode.dart';
+
+import 'package:rick_and_morty_rus_api/data/repository.dart';
 import 'package:rick_and_morty_rus_api/resources/variables.dart';
 
 part 'episode_event.dart';
@@ -12,8 +14,8 @@ part 'episode_bloc.freezed.dart';
 
 class EpisodeBloc extends Bloc<EpisodeEvent, EpisodeState> {
   EpisodeBloc() : super(EpisodeState.initial());
-
-  Episode _selectedEpisode = selectedEpisode;
+  final _repository = Repository();
+  late Episode _selectedEpisode;
 
   @override
   Stream<EpisodeState> mapEventToState(
@@ -32,8 +34,12 @@ class EpisodeBloc extends Bloc<EpisodeEvent, EpisodeState> {
 
     try {
       /// Получение данных
+      print("## Начинаем загрузку описания выбранного эпизода");
+      _selectedEpisode = await _repository
+          .getEpisodeById("968b9906-d502-4a1b-8315-a3c6f6df1c31");
     } catch (ex) {
       /// Вовращаем состояние с ошибкой
+      print("## Получи ошибку в блоке выбранного эпизода $ex");
     }
 
     /// Возвращаем состояние с данными

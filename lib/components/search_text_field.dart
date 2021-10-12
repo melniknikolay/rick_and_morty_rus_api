@@ -9,7 +9,11 @@ import '../theme/text_theme.dart';
 class SearchTextField extends StatelessWidget {
   final String title;
   final Widget? suffixIcon;
-  SearchTextField({required this.title, this.suffixIcon});
+
+  SearchTextField({
+    required this.title,
+    this.suffixIcon,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:rick_and_morty_rus_api/data/models/character.dart';
 import 'package:rick_and_morty_rus_api/data/models/episode.dart';
+import 'package:rick_and_morty_rus_api/data/repository.dart';
 import 'package:rick_and_morty_rus_api/resources/variables.dart';
-import 'package:rick_and_morty_rus_api/screens/profile/models/chapter.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';
@@ -13,34 +13,38 @@ part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(ProfileState.initial());
-  Character _character = character1;
-  List<Episode> _chaptersList = episodesList;
 
-  ///отслеживает события, метод map сокращает код и не теряет состояние.
+  final _repository = Repository();
+  late Character _character;
+
+  /// Отслеживает события. Метод map позволяет нам сократить код и не дает потерять состояние.
   @override
   Stream<ProfileState> mapEventToState(
     ProfileEvent event,
   ) async* {
     yield* event.map(
-      ///стрим для инициализации
+      /// Стрим для инициализации
       initial: _mapInitialProfileEvent,
     );
   }
 
   Stream<ProfileState> _mapInitialProfileEvent(
       _InitialProfileEvent event) async* {
-    ///возвращаем состояние загрузки
+    /// Возвращаем состояние загрузки
     yield ProfileState.loading();
 
     try {
-      ///получение данных
+      /// Получение данных
+      print("## Начинаем загрузку профиля персонажа");
+      _character = await _repository
+          .getCharacter("367209e4-2cbe-4f70-a82f-9961d29d0962");
     } catch (ex) {
-      ///вовращаем состояние с ошибкой
+      /// Вовращаем состояние с ошибкой
+      print("## Получи ошибку в блоке профиля персонажа $ex");
     }
 
-    ///возвращаем состояние с данными
+    /// Возвращаем состояние с данными
     yield ProfileState.data(
-      chaptersList: _chaptersList,
       character: _character,
     );
   }

@@ -3,12 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_and_morty_rus_api/components/app_chapters_tile.dart';
 import 'package:rick_and_morty_rus_api/data/models/episode.dart';
 import 'package:rick_and_morty_rus_api/resources/icons.dart';
-import 'package:rick_and_morty_rus_api/screens/profile/models/chapter.dart';
+
 import 'package:rick_and_morty_rus_api/theme/color_theme.dart';
 import 'package:rick_and_morty_rus_api/theme/text_theme.dart';
 
 class Chapters extends StatelessWidget {
   final List<Episode> chaptersList;
+
   const Chapters({
     required this.chaptersList,
   });

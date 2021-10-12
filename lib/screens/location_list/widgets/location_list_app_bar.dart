@@ -21,7 +21,6 @@ class LocationsListAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      backgroundColor: ColorTheme.blue_900,
       automaticallyImplyLeading: false,
       title: SearchTextField(
         title: 'Найти локацию',

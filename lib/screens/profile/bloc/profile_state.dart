@@ -2,16 +2,15 @@ part of 'profile_bloc.dart';
 
 @freezed
 class ProfileState with _$ProfileState {
-  ///состояние с данными
+  /// Состояние с данными
   const factory ProfileState.data({
-    ///параметры
-    required final List<Episode> chaptersList,
+    /// Параметры
     required final Character character,
   }) = _DataProfileState;
 
-  ///состояние инициализации
+  /// Состояние инициализации
   const factory ProfileState.initial() = _InitialProfileState;
 
-  ///состояние отображения этапа загрузки
+  /// Состояние отображения этапа загрузки
   const factory ProfileState.loading() = _LoadingProfileState;
 }

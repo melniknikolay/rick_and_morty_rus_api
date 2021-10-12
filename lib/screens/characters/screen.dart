@@ -26,18 +26,19 @@ class CharactersScreen extends StatelessWidget {
 
       /// Обрабатываем состояние
       child: BlocConsumer<CharactersBloc, CharactersState>(
-        ///Используется для отображения ошибок,навигации и др.
+        /// Возвращает виджеты поверх основного состояния. Используется для отображения
+        /// ошибок, навигации и др.
         listener: (context, state) {},
 
         /// Обрабатывает состояния
         builder: (context, state) {
           return state.maybeMap(
-            loading: (_) => CircularProgressIndicator(),
+            loading: (_) => Center(child: CircularProgressIndicator()),
             data: (_data) => Scaffold(
               appBar: CharactersAppBar(_data.charactersList.length),
               body: _data.isGrid
-                  ? CharactersGrid(charactersList)
-                  : CharactersList(charactersList),
+                  ? CharactersGrid(_data.charactersList)
+                  : CharactersList(_data.charactersList),
               bottomNavigationBar: AppBottomNavigationBar(
                 currentIndex: 0,
                 onTap: () {},
