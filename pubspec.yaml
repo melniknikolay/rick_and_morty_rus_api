@@ -50,6 +50,7 @@ dev_dependencies:
   freezed: ^0.14.2
   build_runner: ^2.0.3
   equatable: ^2.0.0
+  dio: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
