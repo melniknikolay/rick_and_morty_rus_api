@@ -5,21 +5,6 @@ import 'episode.dart';
 enum Status { live, dead, unknown }
 
 class Character {
-  Character({
-    this.id,
-    this.firstName,
-    this.lastName,
-    this.fullName,
-    this.status,
-    this.about,
-    this.gender,
-    this.race,
-    this.imageName,
-    this.placeOfBirthId,
-    this.placeOfBirth,
-    this.episodes,
-  });
-
   final String? id;
   final String? firstName;
   final String? lastName;
@@ -29,9 +14,28 @@ class Character {
   final int? gender;
   final String? race;
   final String? imageName;
+  final String? locationId;
+  final Location? location;
   final String? placeOfBirthId;
   final Location? placeOfBirth;
   final List<Episode>? episodes;
+
+  Character({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.fullName,
+    this.status,
+    this.about,
+    this.gender,
+    this.race,
+    this.locationId,
+    this.location,
+    this.imageName,
+    this.placeOfBirthId,
+    this.placeOfBirth,
+    this.episodes,
+  });
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
         id: json["id"],
@@ -42,11 +46,17 @@ class Character {
         about: json["about"],
         gender: json["gender"],
         race: json["race"],
+        locationId: json["locationId"],
+        location: json["location"] == null
+            ? null
+            : Location.fromJson(json["location"]),
         imageName: json["imageName"],
         placeOfBirthId: json["placeOfBirthId"],
-        placeOfBirth: (json["placeOfBirth"] is String)
-            ? Location(name: json["placeOfBirth"])
-            : Location.fromJson(json["placeOfBirth"]),
+        placeOfBirth: json["placeOfBirth"] == null
+            ? null
+            : ((json["placeOfBirth"] is String)
+                ? Location(name: json["placeOfBirth"])
+                : Location.fromJson(json["placeOfBirth"])),
         episodes: List<Episode>.from(
             json["episodes"]?.map((x) => Episode.fromJson(x)) ?? []),
       );
@@ -60,6 +70,8 @@ class Character {
         "about": about,
         "gender": gender,
         "race": race,
+        "locationId": locationId,
+        "location": location?.toJson(),
         "imageName": imageName,
         "placeOfBirthId": placeOfBirthId,
         "placeOfBirth": placeOfBirth?.toJson(),

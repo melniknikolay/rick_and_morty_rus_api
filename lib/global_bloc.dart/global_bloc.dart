@@ -12,7 +12,7 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
   GlobalBloc() : super(GlobalState.initial());
 
   /// TODO: final _repository = Repository();
-  int _activeTab = 0;
+  int _activeTab = 1;
 
   @override
   Stream<GlobalState> mapEventToState(
@@ -47,7 +47,7 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
   Stream<GlobalState> _mapSelectedTabGlobalEvent(
       _SelectedTabGlobalEvent event) async* {
     yield GlobalState.loading();
-    _activeTab = event.activeTab;
+    _activeTab = event.index;
     yield GlobalState.data(
       activeTab: _activeTab,
     );
