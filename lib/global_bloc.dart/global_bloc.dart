@@ -13,7 +13,6 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
 
   /// TODO: final _repository = Repository();
   int _activeTab = 0;
-  late List<Character> _charactersList;
 
   @override
   Stream<GlobalState> mapEventToState(
@@ -34,14 +33,13 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
 
     try {
       /// Получение данных
-      /// TODO: _charactersList = await _repository.getCharacters();
+
     } catch (ex) {
       /// Возвращаем состояние с ошибкой
     }
 
     /// Возвращаем состояние с данными
     yield GlobalState.data(
-      charactersList: _charactersList,
       activeTab: _activeTab,
     );
   }
@@ -51,7 +49,6 @@ class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
     yield GlobalState.loading();
     _activeTab = event.activeTab;
     yield GlobalState.data(
-      charactersList: _charactersList,
       activeTab: _activeTab,
     );
   }

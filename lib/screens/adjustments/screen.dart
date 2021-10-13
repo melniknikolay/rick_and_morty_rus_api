@@ -72,7 +72,7 @@ class AdjustmentsScreen extends StatelessWidget {
               ),
               bottomNavigationBar: AppBottomNavigationBar(
                 currentIndex: 3,
-                onTap: () {},
+                onTap: (int index) {},
               ),
             ),
             orElse: () => SizedBox.shrink(),
