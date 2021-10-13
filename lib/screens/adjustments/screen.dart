@@ -27,6 +27,7 @@ class AdjustmentsScreen extends StatelessWidget {
           data: (_data) => Scaffold(
             appBar: AppBar(
               elevation: .0,
+              backgroundColor: ColorTheme.blue_900,
               title: Text(
                 'Настройки',
                 style: AppTextTheme.headline6.copyWith(
@@ -55,9 +56,7 @@ class AdjustmentsScreen extends StatelessWidget {
                       onTap: () {
                         showDialog<void>(
                           context: context,
-                          builder: (context) => ThemeAlertDialog(
-                            themeOptionIndex: _data.darkModeOptionIndex,
-                          ),
+                          builder: (context) => ThemeAlertDialog(),
                         );
                       },
                     ),
